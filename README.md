@@ -1,17 +1,47 @@
 <p align="center">
 <img width="10%" src="https://github.com/maxcleme/OPL-Rendu2/blob/master/report/images/logoCoCoSpoon.png" />
 </p>
-# CoCoSpoon
 
-La couverture de code est une métrique représentant le pourcentage de code exécuté. Cette métrique est utiliser lors l'exécution de suites de tests afin de mesurer le code couvert par ces suites.
+# CoCoSpoon-ui[![Build Status](https://travis-ci.org/SpoonLabs/CoCoSpoon-ui?branch=master)](https://travis-ci.org/SpoonLabs/CoCoSpoon-ui)
 
-Certaines méthodes de développement comme le TDD vont garantir une bonne couverture de par le fait que les tests sont écrit avant le code. Une question peut alors se poser, la totalité du code couvert est il bien exécuté en production ? Il est probable qu’une ligne de code exécuté lors d’une suite de tests, ne soit jamais exécutée dans un environnement de production.
+This project is the graphical part of [CoCoSpoon](https://github.com/SpoonLabs/CoCoSpoon.git) 
 
-Le but est de montrer que calculer la couverture de code sur un programme exécuté dans un environnement de production est possible, de plus, ce calcul pourrait être réalisé en temps réel pour ne pas avoir à stopper l’exécution du code en production afin d’obtenir cette fameuse métrique.
+# Install
 
-Pour atteindre notre objectif, nous avons utiliser une librairie permettant de faire de la transformation de code source. L’idée est que le programme transformé puisse d’auto-instrumenter afin de notifier l’utilisateur de sa couverture à n'importe quel moment de son exécution.
+To Install CoCoSpoon-Ui first clone it from github:
 
-# Usage
+```
+git clone http://github.com/SpoonLabs/CoCoSpoon-ui.git
+```
+
+Then run the following script:
+```
+./install.sh
+```
+
+It will first retrieve and install CoCoSpoon, and then compile CoCoSpoon-ui.
+
+# Run
+
+## Example
+
+You can run as example commons-lang by running the following script:
+```sh
+./example_commons-lang.sh
+```
+
+## Your own
+
+You can run CoCoSpoon-Ui on your project with:
+```sh
+mvn exec:java -Dexec.mainClass="Main" -Dexec.args="-i <pathToMyProject> -o <pathToMyOutput> -v OVERALL"
+```
+and by replacing `<pathToMyProject>` by the path to the root directory of your project, and 
+`<pathToMyOutput>` by the desired location of the output. The output can be the same as your input, but CoCoSpoon will erase old version by the instrumented one.
+
+To the real time coverage, just run your test suite in your favorite IDE. 
+
+# Options
 
     CocoSpoon
        -i, --input-path     input project folder
